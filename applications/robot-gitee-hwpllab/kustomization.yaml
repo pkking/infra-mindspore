@@ -3,20 +3,10 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - secrets.yaml
-- assign
-- approve
 - cla
-- lgtm
-- label
-- tide
-- review-trigger-new
-- hook-delivery
-- hook-dispatcher
-- access
-- checkpr
 commonLabels:
   app: infrastructure-robot-gitee
 commonAnnotations:
   email: chenzeng765@163.com
   owner: chenzeng
-namespace: robot-gitee-ascend
+namespace: robot-gitee-hwpllab
