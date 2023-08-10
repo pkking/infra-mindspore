@@ -63,7 +63,7 @@ data:
       }
 
       location ^~ /repo/ {
-        proxy_pass https://gitlab.openeuler.sh/api/v4/ ;
+        proxy_pass https://source-xihe.mindspore.cn/api/v4/ ;
       }
 
       location /gitlab-lfs {
