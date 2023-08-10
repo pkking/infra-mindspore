@@ -102,6 +102,7 @@ data:
       - ascend/ascend-inference
       - ascend/ascend-faster-transformer
       - ascend/ascend-inference-ptplugin
+      - ascend/AscendSpeed
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
