@@ -25,6 +25,7 @@ data:
         
     - repos:
       - mindspore/mindinsight
+      - mindspore/mindspore-portal
       need_welcome: true
       cla_label: "mindspore-cla/yes"
       review:
