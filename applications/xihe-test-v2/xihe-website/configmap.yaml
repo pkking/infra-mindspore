@@ -62,10 +62,6 @@ data:
         proxy_pass https://xiheapi.osinfra.cn/oneid/ ;
       }
 
-      location ^~ /repo/ {
-        proxy_pass https://source-xihe.test.osinfra.cn/api/v4/ ;
-      }
-
       location /gitlab-lfs {
         proxy_pass https://chenzeng-test1.obs.cn-north-4.myhuaweicloud.com ;
       }
