@@ -32,4 +32,5 @@ data:
       - ascend/ascend-op-common-lib
       - ascend/ascend-inference
       - ascend/att
+      - ascend/Tensorpipe
       require_self_approval: true
