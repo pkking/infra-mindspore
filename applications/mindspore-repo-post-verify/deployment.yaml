@@ -5,7 +5,7 @@ metadata:
   name: repo-post-verify-deployment
   namespace: mindspore-repo-post-verify
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     rollingUpdate:
       maxUnavailable: 1
