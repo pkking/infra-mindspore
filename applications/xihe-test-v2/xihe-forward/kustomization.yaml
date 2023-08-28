@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 commonAnnotations:
   kubernetes.ops.cluster: mindspore-cn4-x86
-  kubernetes.ops.email: ''
+  kubernetes.ops.email: ""
   kubernetes.ops.os.base: alpine
   kubernetes.ops.owner: zhouzixian
   kubernetes.ops.region: beijing
@@ -11,3 +11,6 @@ resources:
 - xihe-forward-ingress.yaml
 - xihe-forward-service.yaml
 - xihe-forward-deployment.yaml
+images:
+- name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-forward-test
+  newTag: 57804083b19d533f5adf808d67783d1e11b07d8a
