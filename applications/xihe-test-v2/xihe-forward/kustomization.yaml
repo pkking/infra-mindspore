@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+commonAnnotations:
+  kubernetes.ops.cluster: mindspore-cn4-x86
+  kubernetes.ops.email: ''
+  kubernetes.ops.os.base: debian
+  kubernetes.ops.owner: zhouzixian
+  kubernetes.ops.region: beijing
+kind: Kustomization
+namespace: xihe-test-v2
+resources:
+- xihe-forward-ingress.yaml
+- xihe-forward-service.yaml
+- xihe-forward-deployment.yaml
