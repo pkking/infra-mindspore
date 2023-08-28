@@ -13,4 +13,4 @@ resources:
 - xihe-forward-deployment.yaml
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-forward-test
-  newTag: 862b125d02ca162df655ecfca626b15728aafb3d
+  newTag: a0726badbd89eabebf07ea1bfb9404177b45b3bb
