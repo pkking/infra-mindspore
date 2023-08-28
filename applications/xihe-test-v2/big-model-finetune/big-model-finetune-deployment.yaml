@@ -52,3 +52,11 @@ spec:
           requests:
             cpu: 1000m
             memory: 1500Mi
+        volumeMounts:
+        - mountPath: /bigmodel-finetune/conf/config.yaml
+          subPath: config_yaml
+          name: big-model-finetune-secret
+      volumes:
+      - name: big-model-finetune-secret
+        secret:
+          secretName: big-model-finetune-secret
