@@ -31,5 +31,5 @@ data:
       cla_label: "ascend-cla/yes"
       review:
         number_of_approvers: 1
-        total_number_of_approvers: 3
-        total_number_of_reviewers: 1
+        total_number_of_approvers: 1
+        total_number_of_reviewers: 3
