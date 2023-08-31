@@ -42,6 +42,8 @@ data:
         course_work: course_work
         course_record: course_record
         cloud_conf: cloud_conf
+        api_apply: api_apply
+        api_info: api_info
 
     gitlab:
       endpoint: "${GITLAB_ENDPOINT}"
@@ -123,6 +125,7 @@ data:
         signle_picture: "${BIGMODEL_SINGLE_PICTURE}"
         multiple_pictures: "${BIGMODEL_MULTI_PICTURES}"
         ai_detector: "${BIGMODEL_AI_DETECTOR}"
+        wukong_user: "${BIGMODEL_WUKONG_USER}"
 
       obs:
         endpoint: "${VQA_OBS_ENDPOINT}"
@@ -156,7 +159,7 @@ data:
       min_name_length: 3
       max_name_length: 35
       max_desc_length: 200
-      max_title_length: 35
+      max_title_length: 105
       min_title_length: 3
       min_training_name_length: 1
       max_training_name_length: 64

@@ -338,6 +338,11 @@ spec:
             secretKeyRef:
               key: REDIS_PASSWORD
               name: xihe-secret
+        - name: BIGMODEL_WUKONG_USER
+          valueFrom:
+            secretKeyRef:
+              key: BIGMODEL_WUKONG_USER
+              name: xihe-secret
         - name: KEY_PAIR
           valueFrom:
             secretKeyRef:
