@@ -10,6 +10,7 @@ data:
       excluded_repos:
       - ascend/pytorch
       - ascend/AscendSpeed
+      - ascend/ModelLink
       require_self_approval: true      
 
     - repos:
