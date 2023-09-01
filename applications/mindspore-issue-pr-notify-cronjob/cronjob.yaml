@@ -1,0 +1,44 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: notify-cronjob
+  namespace: mindspore-issue-pr-notify-cronjob
+spec:
+  schedule: "6 17 8-14,22-28 * 5"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            vault.hashicorp.com/agent-inject: 'true'
+            vault.hashicorp.com/role: 'pr-issue-notify'
+            vault.hashicorp.com/agent-inject-perms-secrets.yaml: "0700"
+            vault.hashicorp.com/agent-run-as-user: "1000"
+            vault.hashicorp.com/agent-inject-secret-secrets.yaml: 'internal/data/mindspore/pr-issue-notify'
+            vault.hashicorp.com/agent-pre-populate-only: "true"
+            vault.hashicorp.com/agent-inject-template-secrets.yaml: |  
+              {{- with secret "internal/data/mindspore/pr-issue-notify" -}}  
+              {{ .Data.data.config }}
+              {{- end }}
+        spec:
+          imagePullSecrets:
+          - name: huawei-swr-image-pull-secret
+          serviceAccountName: pr-issue-notify
+          restartPolicy: Never
+          containers:
+          - name: job
+            image: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/issue-pr-notify:mindspore-16c4a6
+            env:
+            - name: TZ
+              value: Asia/Shanghai
+            - name: crontab_issue_close_config
+              value: /vault/secrets/secrets.yaml
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 2000Mi
+              limits:
+                cpu: 2000m
+                memory: 4000Mi

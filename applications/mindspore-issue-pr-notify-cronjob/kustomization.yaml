@@ -1,0 +1,12 @@
+resources:
+- namespace.yaml
+- cronjob.yaml
+commonAnnotations:
+  kubernetes.ops.cluster: mindspore-cn4-x86-cluster
+  kubernetes.ops.email: ""
+  kubernetes.ops.os.base: openeuler
+  kubernetes.ops.owner: zhuchao
+  kubernetes.ops.region: beijing
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: mindspore-issue-pr-notify-cronjob
