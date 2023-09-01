@@ -348,6 +348,11 @@ spec:
             secretKeyRef:
               key: BIGMODEL_WUKONG_USER
               name: xihe-secret
+        - name: BIGMODEL_BAICHUAN
+          valueFrom:
+            secretKeyRef:
+              key: BIGMODEL_BAICHUAN
+              name: xihe-secret
         - name: ENCRYPTION_KEY_GITLAB_TOKEN
           valueFrom:
             secretKeyRef:
