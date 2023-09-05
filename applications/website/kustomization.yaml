@@ -1,5 +1,12 @@
-#- purge-cache.yaml
-#- purge-secrets.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+commonAnnotations:
+  email: 245462755@qq.com
+  owner: zhengyuhang
+images:
+- name: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-website
+  newTag: v1.0.20230905093901
+kind: Kustomization
+namespace: website
 resources:
 - deployment.yaml
 - namespace.yaml
@@ -12,12 +19,3 @@ resources:
 - cibot-service.yaml
 - covid-service.yaml
 - console.yaml
-commonAnnotations:
-  email: 245462755@qq.com
-  owner: zhengyuhang
-namespace: website
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-images:
-- name: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-website
-  newTag: v1.0.20230904093132
