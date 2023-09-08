@@ -52,6 +52,11 @@ data:
         person: turing_project
         tips_if_missing: "Please wait for the CI test to be completed."
         tips_if_added_by_others: "You can't add ci-pipeline-passed label manually. Please remove it and wait for the CI test to be completed."  
+      
+      - label: AscendC-SUCC
+        person: turing_project
+        tips_if_missing: "Please trigger AscendC Smoke test in yellow."
+        tips_if_added_by_others: "You can't add ci-pipeline-passed label manually. Please remove it and wait for the CI test to be completed."  
         
     - repos:
       - ascend/Asight
