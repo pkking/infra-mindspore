@@ -4,8 +4,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt-issuer
-    nginx.ingress.kubernetes.io/proxy-body-size: "1G"
+    nginx.ingress.kubernetes.io/proxy-body-size: "15G"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       location /api/graphql {
         return 403;
@@ -28,7 +27,7 @@ spec:
   tls:
     - hosts:
         - source-xihe.test.osinfra.cn
-      secretName: xihe-gitlab-tls
+      secretName: xihe-test-osinfra-cn-tls
   rules:
     - host: source-xihe.test.osinfra.cn
       http:
