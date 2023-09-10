@@ -4,7 +4,7 @@ commonAnnotations:
   owner: zhengyuhang
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-website
-  newTag: v1.0.20230909053039
+  newTag: v1.0.20230911053023
 kind: Kustomization
 namespace: website
 resources:
