@@ -10,3 +10,4 @@ data:
       - cann/air
       - cann/abl-kernel
       - cann/aoe-flow
+      require_self_approval: true
