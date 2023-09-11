@@ -12,4 +12,4 @@ kind: Kustomization
 namespace: mindspore-issue-pr-notify-cronjob
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/issue-pr-notify
-  newTag: mindspore-e016be
+  newTag: mindspore-d2bd8e
