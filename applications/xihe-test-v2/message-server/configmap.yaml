@@ -162,6 +162,9 @@ data:
         cloud: "xihe_cloud_test"
         async: "xihe_async_test"
         bigmodel: "xihe_bigmodel_test"
+        signin:
+          name: "sign_in"
+          topic: "xihe_sign_in_test"
 
     evaluate:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
