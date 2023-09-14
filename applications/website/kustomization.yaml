@@ -6,7 +6,7 @@ images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-website
   newTag: v1.0.20230913141828
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/website-backend
-  newTag: master-86c5ce
+  newTag: master-0b2430
 kind: Kustomization
 namespace: website
 resources:
