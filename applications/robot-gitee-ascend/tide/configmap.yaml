@@ -135,6 +135,7 @@ data:
       - ascend/metadef
       - ascend/tensorflow
       - ascend/parser
+      - ascend/transformers
       merge_method: squash
       labels:
       - label: lgtm
