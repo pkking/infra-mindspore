@@ -292,6 +292,10 @@ data:
       - "Abnormal"
       - "Completed"
       - "Terminated"
+      message:
+        training_created:
+          name: "training_created"
+          topic: "xihe_training_created_test"
 
     finetune:
       endpoint: "${FINETUNE_ENDPOINT}"
