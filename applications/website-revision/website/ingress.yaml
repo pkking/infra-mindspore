@@ -18,7 +18,6 @@ metadata:
       add_header Pragma "no-cache";
       add_header X-Content-Type-Options "nosniff";
     nginx.ingress.kubernetes.io/limit-rpm: "200"
-    nginx.ingress.kubernetes.io/custom-http-errors: '400,500,404'
   name: mindspore-website-www-ingress
   namespace: website-revision
 spec:
