@@ -4,7 +4,7 @@ apiVersion: apps/v1
 metadata:
   name: mindspore-summary
 spec:
-  replicas: 2
+  replicas: 0
   selector: 
     matchLabels:
       component: mindspore-frontend
