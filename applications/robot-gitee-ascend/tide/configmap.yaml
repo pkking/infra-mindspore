@@ -101,9 +101,7 @@ data:
     - repos:
       - ascend/modelzoo
       - ascend/samples
-      - ascend/ModelZoo-PyTorch
       - ascend/ModelZoo-TensorFlow
-      - ascend/op-plugin
       - ascend/ascend-op-common-lib
       - ascend/ascend-transformer-acceleration
       - ascend/ascend-inference
@@ -136,6 +134,8 @@ data:
       - ascend/tensorflow
       - ascend/parser
       - ascend/transformers
+      - ascend/ModelZoo-PyTorch
+      - ascend/op-plugin
       merge_method: squash
       labels:
       - label: lgtm
@@ -162,7 +162,6 @@ data:
       - ascend/cann-benchmark
       - ascend/mindstudio
       - ascend/mindxdl-deploy
-      - ascend/pytorch
       - ascend/pytorch-develop
       - ascend/apex
       - ascend/apex-develop
@@ -178,6 +177,8 @@ data:
       - ascend/msadvisor
       - ascend/ait
       - ascend/att
+      - ascend/ascend-devkit-imager
+      - ascend/ascend-devkit-model-adapter
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
@@ -200,9 +201,8 @@ data:
         tips_if_added_by_others: "You can't add ci-pipeline-passed label manually. Please remove it and wait for the CI test to be completed."
         
     - repos:
-      - ascend/ascend-devkit-imager
-      - ascend/ascend-devkit-model-adapter
-
+      - ascend/pytorch
+      merge_method: squash
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
