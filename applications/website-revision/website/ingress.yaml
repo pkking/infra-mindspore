@@ -9,8 +9,7 @@ metadata:
       rewrite ^/ecosystem/libraries         /ecosystem                                                          redirect;
       rewrite ^/ecosystem/tutorials         /ecosystem                                                          redirect;
       rewrite ^/ecosystem/models            /ecosystem                                                          redirect;
-      rewrite ^/community/evangelist        /community/developer?type=developer                                 redirect;
-      rewrite ^/community/developer         /community/developer?type=member                                    redirect;
+      rewrite ^/community/evangelist        /community/developer                                                redirect;
     nginx.ingress.kubernetes.io/configuration-snippet: |
       add_header Content-Security-Policy "script-src 'self' *.baidu.com 'unsafe-inline' 'unsafe-eval' https://cdn.bootcss.com https://cdn.mathjax.org https://cdnjs.cloudflare.com/ https://cdn.jsdelivr.net/; object-src 'none'; frame-src https://player.bilibili.com";
       add_header X-XSS-Protection "1; mode=block";
