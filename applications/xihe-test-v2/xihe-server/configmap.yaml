@@ -366,7 +366,7 @@ data:
     cloud:
       jupyter_created:
         name: "jupyter_created"
-        topic: "xihe_cloud_test"
+        topic: "xihe_jupyter_created_test"
 
     points:
       domain:
