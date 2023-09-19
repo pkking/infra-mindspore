@@ -3,13 +3,8 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Frame-Options "DENY";
-      add_header Content-Security-Policy "script-src 'self' *.baidu.com 'unsafe-inline' 'unsafe-eval' ; object-src 'none'; frame-src 'none'";
-      add_header Cache-Control "no-cache";
-      add_header Pragma "no-cache";
-      add_header X-Content-Type-Options "nosniff";
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/permanent-redirect: https://www.mindspore.cn/internship
   name: internship-ingress
   namespace: internship
 spec:
@@ -19,12 +14,6 @@ spec:
       secretName: internship-tls
   rules:
     - host: internship.mindspore.cn
-      http:
-        paths:
-          - backend:
-              serviceName: internship-service
-              servicePort: 80
-            path: /
 
 ---
 apiVersion: extensions/v1beta1
@@ -32,13 +21,11 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Frame-Options "DENY";
-      add_header Content-Security-Policy "script-src 'self' *.baidu.com 'unsafe-inline' 'unsafe-eval' ; object-src 'none'; frame-src 'none'";
-      add_header Cache-Control "no-cache";
-      add_header Pragma "no-cache";
-      add_header X-Content-Type-Options "nosniff";
+    nginx.ingress.kubernetes.io/server-snippet: |
+      rewrite ^/zh/internship/         https://www.mindspore.cn/internship           redirect;
+      rewrite ^/zh/calendar/           https://www.mindspore.cn/calendar             redirect;
+      rewrite ^/zh/summit/summit2023/  https://www.mindspore.cn/summit/summit2023    redirect;
+      rewrite ^/                       https://www.mindspore.cn/                     redirect;
   name: new-internship-ingress
   namespace: internship
 spec:
