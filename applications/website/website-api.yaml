@@ -1,0 +1,128 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: website-api-ingress
+  namespace: website
+spec:
+  rules:
+  - host: website-api.mindspore.cn
+    http:
+      paths:
+      - backend:
+          serviceName: website-api-service
+          servicePort: 8080
+        path: /
+  tls:
+  - hosts:
+    - website-api.mindspore.cn
+    secretName: website-api-tls
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-api-service
+  namespace: website
+spec:
+  ports:
+  - name: http-port
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: api
+  type: ClusterIP
+
+---
+apiVersion: secrets-manager.tuenti.io/v1alpha1
+kind: SecretDefinition
+metadata:
+  name: website-api-tls
+  namespace: website
+spec:
+  name: website-api-tls
+  keysMap:
+    ca.crt:
+      path: secrets/data/mindspore/mindspore-cn-tls
+      key: ca.cert
+    tls.crt:
+      path: secrets/data/mindspore/mindspore-cn-tls
+      key: ca.cert
+    tls.key:
+      path: secrets/data/mindspore/mindspore-cn-tls
+      key: ca.key
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+  namespace: website
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'mindspore-website-api'
+        vault.hashicorp.com/agent-inject-perms-application.yaml: "0700"
+        vault.hashicorp.com/agent-run-as-user: "1001"
+        vault.hashicorp.com/agent-inject-secret-application.yaml: 'internal/data/mindspore/mindspore-website-api'
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/agent-inject-template-application.yaml: |  
+          {{- with secret "internal/data/mindspore/mindspore-website-api" -}}  
+          {{ .Data.data.application }}
+          {{- end }}
+      labels:
+        app: api
+    spec:
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
+      serviceAccountName: mindspore-website-api
+      containers:
+      - env:
+        - name: APPLICATION_PATH
+          value: "/vault/secrets/application.yaml"
+        image: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-website-api:master-010da0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 5
+        name: server
+        readinessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 2000Mi
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+        volumeMounts:
+        - mountPath: /mnt/share/file
+          name: website-data-volume
+      volumes:
+      - name: website-data-volume
+        persistentVolumeClaim:
+          claimName: website-data

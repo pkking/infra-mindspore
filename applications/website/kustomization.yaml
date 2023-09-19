@@ -21,3 +21,4 @@ resources:
 - cibot-service.yaml
 - covid-service.yaml
 - console.yaml
+- website-api.yaml
