@@ -4,7 +4,6 @@ metadata:
   name: configmap
 data:
   config.yaml: |
-    training_endpoint: "${TRAINING_ENDPOINT}"
     finetune_endpoint: "${FINETUNE_ENDPOINT}"
 
     mongodb:
@@ -175,6 +174,7 @@ data:
       competitor_applied: "xihe_competitor_applied_test"
       jupyter_created: "xihe_jupyter_created_test"
       course_applied: "xihe_course_applied_test"
+      training_created: "xihe_training_created_test"
 
     evaluate:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
@@ -188,3 +188,6 @@ data:
     cloud:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
       survival_time: 7200
+    
+    training:
+      training_endpoint: "${TRAINING_ENDPOINT}"
