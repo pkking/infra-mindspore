@@ -172,10 +172,10 @@ data:
           name: "inference_async_finish"
           topic: "xihe_inference_async_finish_test"
         picture_publicized:
-          name: "picture_publicized"
+          name: "publicize_wukong_picture"
           topic: "xihe_picture_publicized_test"
         picture_liked:
-          name: "picture_liked"
+          name: "like_ai_picture"
           topic: "xihe_picture_liked_test"
         bigmodel_access_log:
           name: "bigmodel_access_log"
@@ -294,7 +294,7 @@ data:
       - "Terminated"
       message:
         training_created:
-          name: "training_created"
+          name: "train"
           topic: "xihe_training_created_test"
 
     finetune:
@@ -321,13 +321,13 @@ data:
           name: "work_submitted"
           topic: "xihe_work_submitted_test"
         competitor_applied:
-          name: "competitor_applied"
+          name: "apply_competition"
           topic: "xihe_competitor_applied_test"
 
     course:
       message:
         course_applied:
-          name: "course_applied"
+          name: "apply_course"
           topic: "xihe_course_applied_test"
 
     challenge:
@@ -369,7 +369,7 @@ data:
 
     cloud:
       jupyter_created:
-        name: "jupyter_created"
+        name: "start_jupyter"
         topic: "xihe_jupyter_created_test"
 
     points:
