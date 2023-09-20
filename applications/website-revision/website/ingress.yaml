@@ -17,7 +17,7 @@ metadata:
       add_header Cache-Control "no-cache";
       add_header Pragma "no-cache";
       add_header X-Content-Type-Options "nosniff";
-    nginx.ingress.kubernetes.io/limit-rpm: "200"
+    nginx.ingress.kubernetes.io/limit-rpm: "500"
   name: mindspore-website-www-ingress
   namespace: website-revision
 spec:

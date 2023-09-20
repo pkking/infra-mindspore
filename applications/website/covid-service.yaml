@@ -1,8 +1,0 @@
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: covid-shanghai-internal
-spec:
-  type: ExternalName
-  externalName: covid-shanghai-service.covid-shanghai.svc.cluster.local
