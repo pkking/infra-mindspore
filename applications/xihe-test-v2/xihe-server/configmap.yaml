@@ -377,3 +377,9 @@ data:
         max_points_of_day: 50
       repo:
         keep: 30
+      task_doc:
+        templates:
+        - language: Chinese
+          file: /opt/app/points/task-docs-templates/doc_chinese.tmpl
+        - language: English
+          file: /opt/app/points/task-docs-templates/doc_english.tmpl
