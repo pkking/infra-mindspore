@@ -11,7 +11,7 @@ metadata:
       rewrite ^/ecosystem/models            /ecosystem                                                          redirect;
       rewrite ^/community/evangelist        /community/developer                                                redirect;
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header Content-Security-Policy "script-src 'self' *.baidu.com 'unsafe-inline' 'unsafe-eval' https://cdn.bootcss.com https://cdn.mathjax.org https://cdnjs.cloudflare.com/ https://cdn.jsdelivr.net/; object-src 'none'; frame-src https://player.bilibili.com";
+      add_header Content-Security-Policy "script-src 'self' *.baidu.com 'unsafe-inline' 'unsafe-eval' https://cdn.bootcss.com https://cdn.mathjax.org https://cdnjs.cloudflare.com/ https://cdn.jsdelivr.net/; object-src 'none'; frame-src https://player.bilibili.com https://www.bilibili.com";
       add_header X-XSS-Protection "1; mode=block";
       add_header X-Frame-Options "DENY";
       add_header Cache-Control "no-cache";
