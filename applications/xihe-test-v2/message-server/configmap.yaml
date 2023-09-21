@@ -50,9 +50,12 @@ data:
         name: "${PGSQL_NAME}"
         port: ${PGSQL_PORT}
         life:
-      table:
-        pod: pod
-        async_task: async_task
+      cloud:
+        table:
+          pod: pod
+      async:
+        table:
+          async_task: async_task
 
     redis:
       address: "${REDIS_ADDRESS}"
