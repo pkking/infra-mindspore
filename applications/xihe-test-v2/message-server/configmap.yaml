@@ -179,9 +179,9 @@ data:
       project_created: "xihe_create_project_test"
       model_created: "xihe_create_model_test"
       dataset_created: "xihe_create_dataset_test"
-      project_downloaded: "xihe_download_project"
-      dataset_downloaded: "xihe_download_dataset"
-      model_downloaded: "xihe_download_model"
+      project_downloaded: "xihe_download_project_test"
+      dataset_downloaded: "xihe_download_dataset_test"
+      model_downloaded: "xihe_download_model_test"
     evaluate:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
       survival_time: 10800

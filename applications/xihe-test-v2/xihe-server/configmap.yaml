@@ -384,13 +384,13 @@ data:
     download:
       model_download:
         name: "download_model"
-        topic: "xihe_download_model"
+        topic: "xihe_download_model_test"
       dataset_download:
         name: "download_dataset"
-        topic: "xihe_download_dataset"
+        topic: "xihe_download_dataset_test"
       project_download:
         name: "download_project"
-        topic: "xihe_download_project"
+        topic: "xihe_download_project_test"
 
     resource:
       related_resource: "xihe_related_resource_test"
