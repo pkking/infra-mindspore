@@ -281,9 +281,6 @@ data:
       related_resource: "xihe_related_resource_test"
       cloud: "xihe_cloud_test"
       async: "xihe_async_test"
-      signin:
-        name: "sign_in"
-        topic: "xihe_sign_in_test"
 
     training:
       job_done_status:
@@ -383,3 +380,32 @@ data:
           file: /opt/app/points/task-docs-templates/doc_chinese.tmpl
         - language: English
           file: /opt/app/points/task-docs-templates/doc_english.tmpl
+
+    download:
+      model_download:
+        name: "download_model"
+        topic: "xihe_download_model"
+      dataset_download:
+        name: "download_dataset"
+        topic: "xihe_download_dataset"
+      project_download:
+        name: "download_project"
+        topic: "xihe_download_project"
+
+    resource:
+      related_resource: "xihe_related_resource_test"
+      fork: "xihe_fork_test"
+      project_created:
+        name: "create_project"
+        topic: "xihe_create_project_test"
+      model_created:
+        name: "create_model"
+        topic: "xihe_create_model_test"
+      dataset_created:
+        name: "create_dataset"
+        topic: "xihe_create_dataset_test"
+
+    sign_in:
+      user_signedin:
+        name: "sign_in"
+        topic: "xihe_sign_in_test"
