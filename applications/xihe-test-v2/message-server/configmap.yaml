@@ -182,6 +182,13 @@ data:
       project_downloaded: "xihe_download_project_test"
       dataset_downloaded: "xihe_download_dataset_test"
       model_downloaded: "xihe_download_model_test"
+      user:
+        bio_set: "xihe_set_bio_test"
+        avatar_set: "xihe_set_avatar_test"
+        user_signed_up: "xihe_sign_up_test"
+        following_added: "xihe_following_add_test"
+        following_removed: "xihe_following_remove_test"
+
     evaluate:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
       survival_time: 10800
