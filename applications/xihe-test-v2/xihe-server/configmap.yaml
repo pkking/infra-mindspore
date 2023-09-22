@@ -178,9 +178,9 @@ data:
         picture_liked:
           name: "like_ai_picture"
           topic: "xihe_picture_liked_test"
-        bigmodel_access_log:
-          name: "bigmodel_access_log"
-          topic: "xihe_bigmodel_access_log_test"
+        bigmodel_started:
+          name: "try_modelzoo"
+          topic: "xihe_bigmodel_started_test"
 
     domain:
       min_name_length: 3

@@ -165,6 +165,7 @@ data:
       related_resource: "xihe_related_resource_test"
       async: "xihe_async_test"
       signin: "xihe_sign_in_test"
+      bigmodel_started: "xihe_bigmodel_started_test"
       bigmodel_topics:
         inference_start: "xihe_inference_start_test"
         inference_error: "xihe_inference_error_test"
