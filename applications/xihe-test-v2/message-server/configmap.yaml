@@ -201,6 +201,6 @@ data:
     cloud:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
       survival_time: 7200
-    
+
     training:
       training_endpoint: "${TRAINING_ENDPOINT}"

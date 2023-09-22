@@ -6,6 +6,11 @@ metadata:
   namespace: xihe-test-v2
 data:
   config.yaml: |
+    authing:
+      app_id: "${AUTHING_APP_ID}"
+      secret: "${AUTHING_SECRET}"
+      endpoint: "${AUTHING_ENDPOINT}"
+
     mongodb:
       db_conn: "${MONGODB_CONNECTION}"
       db_name: "${MONGODB_NAME}"
@@ -409,9 +414,6 @@ data:
         topic: "xihe_sign_in_test"
 
     user:
-      app_id: "${AUTHING_APP_ID}"
-      secret: "${AUTHING_SECRET}"
-      endpoint: "${AUTHING_ENDPOINT}"
       message:
         bio_set:
           name: "set_bio"
@@ -429,3 +431,14 @@ data:
         following_removed:
           name: "sign_up"
           topic: "xihe_following_remove_test"
+
+    like:
+      model_liked:
+        name: "like_model"
+        topic: "xihe_like_model_test"
+      dataset_liked:
+        name: "like_dataset"
+        topic: "xihe_like_dataset_test"
+      project_liked:
+        name: "like_project"
+        topic: "xihe_like_project_test"
