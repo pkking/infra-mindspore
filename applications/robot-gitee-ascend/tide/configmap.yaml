@@ -105,7 +105,6 @@ data:
       - ascend/ascend-op-common-lib
       - ascend/ascend-transformer-acceleration
       - ascend/ascend-inference
-      - ascend/ascend-faster-transformer
       - ascend/ascend-inference-ptplugin
       - ascend/AscendSpeed
       labels:
@@ -179,6 +178,7 @@ data:
       - ascend/att
       - ascend/ascend-devkit-imager
       - ascend/ascend-devkit-model-adapter
+      - ascend/ascend-faster-transformer
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
