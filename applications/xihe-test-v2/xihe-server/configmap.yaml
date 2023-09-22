@@ -425,7 +425,7 @@ data:
           topic: "xihe_sign_up_test"
         following_added:
           name: "sign_up"
-          topic: "xihe_following_test"
+          topic: "xihe_following_add_test"
         following_removed:
           name: "sign_up"
-          topic: "xihe_following_test"
+          topic: "xihe_following_remove_test"
