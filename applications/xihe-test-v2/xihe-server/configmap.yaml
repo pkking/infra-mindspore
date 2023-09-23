@@ -179,8 +179,11 @@ data:
           name: "like_ai_picture"
           topic: "xihe_picture_liked_test"
         bigmodel_started:
-          name: "try_modelzoo"
+          name: "start_modelzoo"
           topic: "xihe_bigmodel_started_test"
+        bigmodel_finished:
+          name: "try_modelzoo"
+          topic: "xihe_bigmodel_finished_test"
 
     domain:
       min_name_length: 3
