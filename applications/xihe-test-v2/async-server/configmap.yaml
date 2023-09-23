@@ -84,17 +84,20 @@ data:
           name: "inference_async_start"
           topic: "xihe_inference_async_start_test"
         inference_async_finish:
-          name: "inference_async_finish"
+          name: "try_modelzoo"
           topic: "xihe_inference_async_finish_test"
         picture_publicized:
-          name: "picture_publicized"
+          name: "publicize_wukong_picture"
           topic: "xihe_picture_publicized_test"
         picture_liked:
-          name: "picture_liked"
+          name: "like_ai_picture"
           topic: "xihe_picture_liked_test"
-        bigmodel_access_log:
-          name: "bigmodel_access_log"
-          topic: "xihe_bigmodel_access_log_test"
+        bigmodel_started:
+          name: "start_modelzoo"
+          topic: "xihe_bigmodel_started_test"
+        bigmodel_finished:
+          name: "try_modelzoo"
+          topic: "xihe_bigmodel_finished_test"
 
     mq:
       address: "${KAFKA_ADDRESS}"
