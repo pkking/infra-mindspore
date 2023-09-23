@@ -170,7 +170,7 @@ data:
           name: "inference_async_start"
           topic: "xihe_inference_async_start_test"
         inference_async_finish:
-          name: "inference_async_finish"
+          name: "try_modelzoo"
           topic: "xihe_inference_async_finish_test"
         picture_publicized:
           name: "publicize_wukong_picture"
