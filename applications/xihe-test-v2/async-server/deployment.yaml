@@ -241,6 +241,11 @@ spec:
             secretKeyRef:
               key: BIGMODEL_BAICHUAN
               name: xihe-secret
+        - name: BIGMODEL_GLM
+          valueFrom:
+            secretKeyRef:
+              key: BIGMODEL_GLM
+              name: xihe-secret
         - name: REDIS_ADDRESS
           valueFrom:
             secretKeyRef:
