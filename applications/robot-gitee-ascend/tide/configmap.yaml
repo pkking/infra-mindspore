@@ -134,7 +134,6 @@ data:
       - ascend/parser
       - ascend/transformers
       - ascend/ModelZoo-PyTorch
-      - ascend/op-plugin
       merge_method: squash
       labels:
       - label: lgtm
@@ -202,6 +201,7 @@ data:
         
     - repos:
       - ascend/pytorch
+      - ascend/op-plugin
       merge_method: squash
       labels:
       - label: lgtm
