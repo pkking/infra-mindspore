@@ -72,33 +72,24 @@ data:
         secret_key: "${WUKONG_OBS_SECRET_KEY}"
         bucket: "${WUKONG_OBS_BUCKET}"
 
-      message:
-        inference_start:
-          name: "inference_start"
-          topic: "xihe_inference_start_new"
-        inference_error:
-          name: "inference_error"
-          topic: "xihe_inference_error_new"
-        inference_async_start:
-          name: "inference_async_start"
-          topic: "xihe_inference_async_start_new"
-        inference_async_finish:
-          name: "inference_async_finish"
-          topic: "xihe_inference_async_finish_new"
-        picture_publicized:
-          name: "picture_publicized"
-          topic: "xihe_picture_publicized_new"
-        picture_liked:
-          name: "picture_liked"
-          topic: "xihe_picture_liked_new"
-        bigmodel_access_log:
-          name: "bigmodel_access_log"
-          topic: "xihe_bigmodel_access_log_new"
-
     mq:
       address: "${KAFKA_ADDRESS}"
       version: "2.3.0"
-
+      topics:
+        fork: "xihe_fork_new"
+        like: "xihe_like_new"
+        download: "xihe_download_new"
+        evaluate: "xihe_evaluate_new"
+        training: "xihe_training_new"
+        finetune: "xihe_finetune_new"
+        inference: "xihe_inference_new"
+        following: "xihe_following_new"
+        submission: "xihe_submission_new"
+        operate_log: "xihe_operate_log_new"
+        related_resource: "xihe_related_resource_new"
+        cloud: "xihe_cloud_new"
+        async: "xihe_async_new"
+        bigmodel: "xihe_bigmodel_new"
     redis:
       db:
         address: "${REDIS_ADDRESS}"
