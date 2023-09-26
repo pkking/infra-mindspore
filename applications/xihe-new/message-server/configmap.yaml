@@ -4,6 +4,7 @@ metadata:
   name: configmap
 data:
   config.yaml: |
+    training_endpoint: "${TRAINING_ENDPOINT}"
     finetune_endpoint: "${FINETUNE_ENDPOINT}"
 
     mongodb:
@@ -13,7 +14,7 @@ data:
       collections:
         project: project
         model: model
-        dataset: dataset
+        dataset: dataset 
         user: user
         registration: registration
         login: login
@@ -39,8 +40,6 @@ data:
         cloud_conf: cloud_conf
         api_apply: api_apply
         api_info: api_info
-        points_task: points_task
-        user_points: user_points
 
     postgresql:
       db:
@@ -49,14 +48,11 @@ data:
         pwd: "${PGSQL_PWD}"
         name: "${PGSQL_NAME}"
         port: ${PGSQL_PORT}
-        life:
-      cloud:
-        table:
-          pod: pod
-      async:
-        table:
-          async_task: async_task
-
+        life: 
+      table:
+        pod: pod
+        async_task: async_task
+    
     redis:
       address: "${REDIS_ADDRESS}"
       password: "${REDIS_PASSWORD}"
@@ -148,46 +144,21 @@ data:
     mq:
       address: "${KAFKA_ADDRESS}"
       version: "2.3.0"
-
-    mq_topics:
-      fork: "xihe_fork_new"
-      like: "xihe_like_new"
-      cloud: "xihe_jupyter_created_new"
-      download: "xihe_download_new"
-      evaluate: "xihe_evaluate_new"
-      training: "xihe_training_new"
-      finetune: "xihe_finetune_new"
-      inference: "xihe_inference_new"
-      following: "xihe_following_new"
-      submission: "xihe_submission_new"
-      operate_log: "xihe_operate_log_new"
-      related_resource: "xihe_related_resource_new"
-      async: "xihe_async_new"
-      signin: "xihe_sign_in_new"
-      bigmodel_topics:
-        inference_start: "xihe_inference_start_new"
-        inference_error: "xihe_inference_error_new"
-        inference_async_start: "xihe_inference_async_start_new"
-        inference_async_finish: "xihe_inference_async_finish_new"
-        bigmodel_finished: "xihe_bigmodel_finished_new"
-      picture_publicized: "xihe_picture_publicized_new"
-      picture_liked: "xihe_picture_liked_new"
-      competitor_applied: "xihe_competitor_applied_new"
-      jupyter_created: "xihe_jupyter_created_new"
-      course_applied: "xihe_course_applied_new"
-      training_created: "xihe_training_created_new"
-      project_created: "xihe_create_project_new"
-      model_created: "xihe_create_model_new"
-      dataset_created: "xihe_create_dataset_new"
-      project_downloaded: "xihe_download_project_new"
-      dataset_downloaded: "xihe_download_dataset_new"
-      model_downloaded: "xihe_download_model_new"
-      user:
-        bio_set: "xihe_set_bio_new"
-        avatar_set: "xihe_set_avatar_new"
-        user_signed_up: "xihe_sign_up_new"
-        following_added: "xihe_following_add_new"
-        following_removed: "xihe_following_remove_new"
+      topics:
+        fork: "xihe_fork_new"
+        like: "xihe_like_new"
+        download: "xihe_download_new"
+        evaluate: "xihe_evaluate_new"
+        training: "xihe_training_new"
+        finetune: "xihe_finetune_new"
+        inference: "xihe_inference_new"
+        following: "xihe_following_new"
+        submission: "xihe_submission_new"
+        operate_log: "xihe_operate_log_new"
+        related_resource: "xihe_related_resource_new"
+        cloud: "xihe_cloud_new"
+        async: "xihe_async_new"
+        bigmodel: "xihe_bigmodel_new"
 
     evaluate:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
@@ -201,6 +172,3 @@ data:
     cloud:
       endpoint: "${INFERENCE_EVALUATE_ENDPOINT}"
       survival_time: 7200
-
-    training:
-      training_endpoint: "${TRAINING_ENDPOINT}"
