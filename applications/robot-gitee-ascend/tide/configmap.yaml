@@ -106,7 +106,6 @@ data:
       - ascend/ascend-transformer-acceleration
       - ascend/ascend-inference
       - ascend/ascend-inference-ptplugin
-      - ascend/AscendSpeed
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
@@ -178,6 +177,7 @@ data:
       - ascend/ascend-devkit-imager
       - ascend/ascend-devkit-model-adapter
       - ascend/ascend-faster-transformer
+      - ascend/AscendSpeed
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
