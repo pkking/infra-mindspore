@@ -270,21 +270,20 @@ data:
 
     mq:
       address: "${KAFKA_ADDRESS}"
-      topics:
-        fork: "xihe_fork_new"
-        like: "xihe_like_new"
-        download: "xihe_download_new"
-        evaluate: "xihe_evaluate_new"
-        training: "xihe_training_new"
-        finetune: "xihe_finetune_new"
-        inference: "xihe_inference_new"
-        following: "xihe_following_new"
-        submission: "xihe_submission_new"
-        operate_log: "xihe_operate_log_new"
-        related_resource: "xihe_related_resource_new"
-        cloud: "xihe_cloud_new"
-        async: "xihe_async_new"
-        bigmodel: "xihe_bigmodel_new"
+    mq_topics:
+      fork: "xihe_fork_new"
+      like: "xihe_like_new"
+      download: "xihe_download_new"
+      evaluate: "xihe_evaluate_new"
+      training: "xihe_training_new"
+      finetune: "xihe_finetune_new"
+      inference: "xihe_inference_new"
+      following: "xihe_following_new"
+      submission: "xihe_submission_new"
+      operate_log: "xihe_operate_log_new"
+      related_resource: "xihe_related_resource_new"
+      cloud: "xihe_cloud_new"
+      async: "xihe_async_new"
 
     training:
       job_done_status:
