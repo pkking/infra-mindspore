@@ -231,6 +231,11 @@ spec:
             secretKeyRef:
               key: BIGMODEL_AI_DETECTOR
               name: xihe-secret
+        - name: BIGMODEL_WUKONG_USER
+          valueFrom:
+            secretKeyRef:
+              key: BIGMODEL_WUKONG_USER
+              name: xihe-secret
         - name: REDIS_ADDRESS
           valueFrom:
             secretKeyRef:
