@@ -103,7 +103,7 @@ data:
         - robot-gitee-openeuler-cla
         - datastat-server
 
-        openeuler/infrastructure
+        openeuler/infrastructure:
         - robot-gitee-pr-message
 
         openlookeng:
