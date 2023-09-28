@@ -103,6 +103,9 @@ data:
         - robot-gitee-openeuler-cla
         - datastat-server
 
+        openeuler/infrastructure:
+        - robot-gitee-pr-message
+
         openlookeng:
         - robot-gitee-openlookeng-lgtm
         - robot-gitee-openlookeng-approve
@@ -513,5 +516,11 @@ data:
         endpoint: http://om-service.robot-gitee-om.svc.cluster.local:8888/query/gitee/webhook
         events:
         - "Issue Hook"
+        - "Merge Request Hook"
+        - "Note Hook"
+
+      - name: robot-gitee-pr-message
+        endpoint: https://prmessage.test.osinfra.cn/hook/analyze
+        events:
         - "Merge Request Hook"
         - "Note Hook"
