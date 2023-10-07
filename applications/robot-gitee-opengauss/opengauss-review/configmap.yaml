@@ -22,6 +22,7 @@ data:
       - opengauss/openGauss-server
       - opengauss/docs
       - opengauss/openGauss-workbench
+      - opengauss/openGauss-tools-sql-translator
       lgtm_counts_required: 2
       legal_operator: opengauss_bot
       labels_for_merge:
@@ -55,3 +56,11 @@ data:
         - opengauss-cla/yes
       missing_labels_for_merge:
         - codecheck-failed
+        
+    - repos:
+      - opengauss/openGauss-tools-sql-translator
+      lgtm_counts_required: 2
+      legal_operator: opengauss_bot
+      labels_for_merge:
+      - opengauss-cla/yes
+      - codecheck-success
