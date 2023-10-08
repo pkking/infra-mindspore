@@ -29,12 +29,12 @@ data:
       project: "${PROJECT}"
       auth_endpoint: "${AUTH_ENDPOINT}"
       project_id: "${PROJECT_ID}"
-      endpoint: "${ENDPOINT}"
+      endpoint: "${AICC_ENDPOINT}"
 
     obs:
       access_key: "${ACSESS_KEY}"
       secret_key: "${SECRET_KEY}"
-      endpoint: "${ENDPOINT}" 
+      endpoint: "${OBS_ENDPOINT}" 
       bucket: "${BUCKET}" 
 
     upload:
