@@ -14,9 +14,30 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/secret-volume-path: "/bigmodel-finetune/conf/"
+        vault.hashicorp.com/agent-inject-perms-finetune_basic.yml: "0700"
+        vault.hashicorp.com/agent-inject-perms-asset.yml: "0700"
+        vault.hashicorp.com/agent-run-as-user: "1000"
+        vault.hashicorp.com/agent-inject-secret-finetune_basic.yml: "internal/data/mindspore/xihe-test-v2"
+        vault.hashicorp.com/agent-inject-template-finetune_basic.yml: |
+          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
+          {{ .Data.data.finetuneBasic }}
+          {{- end }}
+        vault.hashicorp.com/agent-inject-secret-asset.yml: "internal/data/mindspore/xihe-test-v2"
+        vault.hashicorp.com/agent-inject-template-asset.yml: |
+          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
+          {{ .Data.data.finetuneAsset }}
+          {{- end }}
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/role: xihe-test
       labels:
         app: big-model-finetune
     spec:
+      serviceAccount: xihe-test
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
       containers:
       - image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/big-model-finetune:c409315983b32f9ea44dae3c51e2a54123a5673e
         imagePullPolicy: IfNotPresent
@@ -32,10 +53,7 @@ spec:
         name: big-model-finetune
         env:
         - name: CPU_COUNT
-          valueFrom:
-            secretKeyRef:
-              key: big_model_finetune_cpu_count
-              name: big-model-finetune-secret
+          value: "4"
         readinessProbe:
           failureThreshold: 3
           httpGet:
@@ -52,14 +70,3 @@ spec:
           requests:
             cpu: 1000m
             memory: 1500Mi
-        volumeMounts:
-        - mountPath: /bigmodel-finetune/conf/config.yaml
-          subPath: config_yaml
-          name: big-model-finetune-secret
-        - mountPath: /bigmodel-finetune/conf/asset.yml
-          subPath: asset_yaml
-          name: big-model-finetune-secret
-      volumes:
-      - name: big-model-finetune-secret
-        secret:
-          secretName: big-model-finetune-secret
