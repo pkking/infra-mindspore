@@ -201,7 +201,7 @@ data:
         mindspore/mindinsight:
         - robot-gitee-mindspore-review-trigger-new
         
-        mindposre/mindscience:
+        mindspore/mindscience:
         - robot-gitee-mindspore-review-trigger-new
         
         mindspore/mindspore-portal:
