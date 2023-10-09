@@ -58,7 +58,7 @@ spec:
           name: http
           protocol: TCP
         volumeMounts:
-        - mountPath: /app/conf/xihe-gitlab/app_config/config.yaml
+        - mountPath: /app/conf/xihe-aiccfinetune/app_config/config.yaml
           name: config
           subPath: config.yaml
       volumes:
