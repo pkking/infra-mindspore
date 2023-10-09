@@ -373,6 +373,31 @@ spec:
             secretKeyRef:
               key: MONGODB_CERT
               name: xihe-secret
+        - name: AICC_OBS_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              key: AICC_OBS_ENDPOINT
+              name: xihe-secret
+        - name: AICC_OBS_AK
+          valueFrom:
+            secretKeyRef:
+              key: AICC_OBS_AK
+              name: xihe-secret
+        - name: AICC_OBS_SK
+          valueFrom:
+            secretKeyRef:
+              key: AICC_OBS_SK
+              name: xihe-secret
+        - name: AICC_FINETUNE_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              key: AICC_FINETUNE_ENDPOINT
+              name: xihe-secret
+        - name: AICC_FINETUNE_BUCKET
+          valueFrom:
+            secretKeyRef:
+              key: AICC_FINETUNE_BUCKET
+              name: xihe-secret
         resources:
           requests:
             cpu: 1000m
