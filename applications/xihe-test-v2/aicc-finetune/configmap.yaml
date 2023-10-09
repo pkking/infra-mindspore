@@ -42,4 +42,3 @@ data:
       upload_work_dir: "/opt/app/upload_folder"
       upload_folder_shell: "/opt/app/upload_folder.sh"
       obsutil_path: /opt/app/obsutil
-      download_expiry: "${DOWNLOAD_EXPIRY}"
