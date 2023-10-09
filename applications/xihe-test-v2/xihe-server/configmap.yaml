@@ -46,6 +46,7 @@ data:
         api_info: api_info
         points_task: points_task
         user_points: user_points
+        aicc_finetune: aicc_finuetune
 
     gitlab:
       endpoint: "${GITLAB_ENDPOINT}"
@@ -286,6 +287,7 @@ data:
       related_resource: "xihe_related_resource_test"
       cloud: "xihe_cloud_test"
       async: "xihe_async_test"
+      aiccfinetune: "aicc_finetune_test"
 
     training:
       job_done_status:
@@ -447,3 +449,25 @@ data:
       project_liked:
         name: "like_project"
         topic: "xihe_like_project_test"
+    
+    aicc_finetune:
+      job_done_status:
+      - "Failed"
+      - "Timeout"
+      - "Abnormal"
+      - "Completed"
+      - "Terminated"
+      can_terminate_status:
+      - "Pending"
+      - "Running"
+      - "Creating"
+      obs_config:
+        endpoint: "${AICC_OBS_ENDPOINT}"
+        access_key: "${AICC_OBS_AK}"
+        secret_key: "${AICC_OBS_SK}"
+        bucket: "${AICC_FINETUNE_BUCKET}"
+      endpoint: "${AICC_FINETUNE_ENDPOINT}"
+      message:
+        aiccfinetune:
+          name: "aicc_finetune_created"
+          topic: "aicc_finetune_created_test"
