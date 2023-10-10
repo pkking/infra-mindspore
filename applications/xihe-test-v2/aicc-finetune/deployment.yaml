@@ -16,16 +16,30 @@ spec:
       app: aicc-finetune
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
+        vault.hashicorp.com/agent-run-as-user: "5000"
+        vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-test-v2"
+        vault.hashicorp.com/agent-inject-template-application.yml: |
+          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
+          {{ .Data.data.aiccfinetune }}
+          {{- end }}
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/role: xihe-test
       labels:
         app: aicc-finetune
     spec:
+      serviceAccount: xihe-test
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
       containers:
       - name: aicc-finetune
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-aicc-finetune:test1-8e7a4c
         imagePullPolicy: IfNotPresent
         args:
         - --port=8080
-        - --config-file=/app/conf/xihe-aiccfinetune/app_config/config.yaml
+        - --config-file=/vault/secrets/application.yml
         - --enable_debug=true
         envFrom:
         - secretRef:
@@ -57,11 +71,3 @@ spec:
         - containerPort: 8080
           name: http
           protocol: TCP
-        volumeMounts:
-        - mountPath: /app/conf/xihe-aiccfinetune/app_config/config.yaml
-          name: config
-          subPath: config.yaml
-      volumes:
-      - name: config
-        configMap:
-          name: aicc-finetune-configmap
