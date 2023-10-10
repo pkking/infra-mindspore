@@ -7,5 +7,4 @@ namespace: xihe-test-v2
 resources:
 - xihe-statistics-ingress.yaml
 - xihe-statistics-service.yaml
-- xihe-statistics-secret.yaml
 - xihe-statistics-deployment.yaml
