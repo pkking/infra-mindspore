@@ -17,14 +17,8 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/secret-volume-path: "/bigmodel-finetune/conf/"
-        vault.hashicorp.com/agent-inject-perms-finetune_basic.yml: "0700"
         vault.hashicorp.com/agent-inject-perms-asset.yml: "0700"
         vault.hashicorp.com/agent-run-as-user: "5000"
-        vault.hashicorp.com/agent-inject-secret-finetune_basic.yml: "internal/data/mindspore/xihe-test-v2"
-        vault.hashicorp.com/agent-inject-template-finetune_basic.yml: |
-          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
-          {{ .Data.data.finetuneBasic }}
-          {{- end }}
         vault.hashicorp.com/agent-inject-secret-asset.yml: "internal/data/mindspore/xihe-test-v2"
         vault.hashicorp.com/agent-inject-template-asset.yml: |
           {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
