@@ -12,7 +12,7 @@ spec:
         vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
         vault.hashicorp.com/agent-inject-perms-hmac: "0700"
         vault.hashicorp.com/agent-inject-perms-kafka: "0700"
-        vault.hashicorp.com/agent-run-as-user: "1000"
+        vault.hashicorp.com/agent-run-as-user: "5000"
         vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-test-v2"
         vault.hashicorp.com/agent-inject-template-application.yml: |
           {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
