@@ -14,36 +14,29 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
+        vault.hashicorp.com/agent-run-as-user: "5000"
+        vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-new"
+        vault.hashicorp.com/agent-inject-template-application.yml: |
+          {{- with secret "internal/data/mindspore/xihe-new" -}}
+          {{ .Data.data.xiheStatistics }}
+          {{- end }}
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/role: xihe-new
       labels:
         app: xihe-statistics
     spec:
+      serviceAccount: xihe-new
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
       containers:
-      - env:
-        - name: CONFIG_PATH
-          valueFrom:
-            secretKeyRef:
-              key: config_path
-              name: xihe-statistics-secret
-        - name: GITLAB_ENDPOINT
-          valueFrom:
-            secretKeyRef:
-              key: GITLAB_ENDPOINT
-              name: xihe-statistics-secret
-        - name: GITLAB_GRAPHQL_ENDPOINT
-          valueFrom:
-            secretKeyRef:
-              key: GITLAB_GRAPHQL_ENDPOINT
-              name: xihe-statistics-secret
-        - name: GITLAB_TOKEN
-          valueFrom:
-            secretKeyRef:
-              key: GITLAB_TOKEN
-              name: xihe-statistics-secret
-        image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-statistics:a8ed23f7a0180097980ace67e6bc9a11cc63a826
+      - image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-statistics:a8ed23f7a0180097980ace67e6bc9a11cc63a826
         imagePullPolicy: IfNotPresent
         args:
         - --port=8080
-        - --config-file=/conf/xihe-statistics/config.yaml
+        - --config-file=/vault/secrets/application.yml
         livenessProbe:
           failureThreshold: 3
           initialDelaySeconds: 20
@@ -68,11 +61,3 @@ spec:
           requests:
             cpu: 1000m
             memory: 1000Mi
-        volumeMounts:
-        - mountPath: /conf/xihe-statistics/config.yaml
-          name: secret-config
-          subPath: config_yaml
-      volumes:
-      - name: secret-config
-        secret:
-          secretName: xihe-statistics-secret

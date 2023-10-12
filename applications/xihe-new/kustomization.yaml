@@ -4,8 +4,6 @@ resources:
 - internal-server
 - message-server
 - hook-delivery
-- hook-dispatcher
-- access
 - sync-repo
 - training-center-huaweicloud
 - inference-evaluate
