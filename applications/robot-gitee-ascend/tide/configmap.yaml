@@ -104,7 +104,6 @@ data:
       - ascend/ModelZoo-TensorFlow
       - ascend/ascend-op-common-lib
       - ascend/ascend-transformer-acceleration
-      - ascend/ascend-inference
       - ascend/ascend-inference-ptplugin
       labels:
       - label: lgtm
@@ -178,6 +177,7 @@ data:
       - ascend/ascend-devkit-model-adapter
       - ascend/ascend-faster-transformer
       - ascend/AscendSpeed
+      - ascend/ascend-inference
       labels:
       - label: lgtm
         tips_if_missing: "Please wait for reviewers to review the code."
