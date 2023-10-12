@@ -78,6 +78,9 @@ data:
         proxy_pass https://xihe-statistics.mindspore.cn/;
       }
 
+      location /api-dsapi/ {
+        proxy_pass https://dsapi.osinfra.cn/;
+      }
       error_page 500 501 502 503 504 505 /500.html;
       error_page 401 /401.html;
       error_page 404 /404.html;
