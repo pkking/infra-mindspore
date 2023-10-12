@@ -41,9 +41,6 @@ spec:
         - --port=8080
         - --config-file=/vault/secrets/application.yml
         - --enable_debug=true
-        envFrom:
-        - secretRef:
-            name: aicc-finetune-secret
         resources:
           requests:
             cpu: 1000m
