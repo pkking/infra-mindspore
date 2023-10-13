@@ -17,41 +17,29 @@ spec:
       app: xihe-script
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
+        vault.hashicorp.com/agent-run-as-user: "5000"
+        vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-new"
+        vault.hashicorp.com/agent-inject-template-application.yml: |
+          {{- with secret "internal/data/mindspore/xihe-new" -}}
+          {{ .Data.data.xiheScript }}
+          {{- end }}
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/role: xihe-new
       labels:
         app: xihe-script
     spec:
+      serviceAccount: xihe-new
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
       containers:
       - name: xihe-script
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-script:v1.0.20221122113307
         imagePullPolicy: IfNotPresent
         args:
-        - --config-file=/opt/app/config/config.yaml
-        env:
-        - name: OBS_AK
-          valueFrom:
-            secretKeyRef:
-              name: xihe-secret
-              key: HW_OBS_AK
-        - name: OBS_SK
-          valueFrom:
-            secretKeyRef:
-              name: xihe-secret
-              key: HW_OBS_SK
-        - name: OBS_ENDPOINT
-          valueFrom:
-            secretKeyRef:
-              name: xihe-secret
-              key: HW_OBS_ENDPOINT
-        - name: OBS_BUCKETNAME
-          valueFrom:
-            secretKeyRef:
-              name: xihe-secret
-              key: HW_OBS_BUCKET
-        - name: KAFKA_ADDRESS
-          valueFrom:
-            secretKeyRef:
-              name: xihe-secret
-              key: KAFKA_ADDRESS
+        - --config-file=/vault/secrets/application.yml
         resources:
           requests:
             cpu: 2000m
@@ -62,9 +50,6 @@ spec:
         volumeMounts:
         - mountPath: /dev/shm
           name: dshm
-        - mountPath: /opt/app/config/config.yaml
-          name: config
-          subPath: config.yaml
         ports:
         - containerPort: 8080
           name: http
@@ -74,6 +59,3 @@ spec:
         emptyDir:
           medium: Memory
           sizeLimit: 1Gi
-      - name: config
-        configMap:
-          name: py-configmap

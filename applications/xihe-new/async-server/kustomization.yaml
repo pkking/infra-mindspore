@@ -5,11 +5,10 @@ images:
 kind: Kustomization
 commonAnnotations:
   kubernetes.ops.cluster: mindspore-cn4-x86
-  kubernetes.ops.email: victorzhoux@163.com
+  kubernetes.ops.email: ""
   kubernetes.ops.os.base: alpine
   kubernetes.ops.owner: zhouzixian
   kubernetes.ops.region: hk
 namespace: xihe-new
 resources:
 - deployment.yaml
-- configmap.yaml
