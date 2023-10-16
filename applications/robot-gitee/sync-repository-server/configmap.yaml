@@ -6,6 +6,7 @@ data:
   config.yaml: |
     kafka:
       address: "${KAFKA_ADDRESS}"
+      version: "2.3.0"
 
     gitee:
       token: "${ROBOT_TOKEN}"
