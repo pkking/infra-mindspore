@@ -4,7 +4,7 @@ metadata:
   name: doc-search-deployment
   namespace: mindspore-doc-search
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: doc-search
@@ -15,73 +15,64 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'mindspore-search'
+        vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
+        vault.hashicorp.com/agent-run-as-user: "1001"
+        vault.hashicorp.com/agent-inject-secret-application.yml: 'internal/data/mindspore/search'
+        vault.hashicorp.com/agent-inject-template-application.yml: |  
+          {{- with secret "internal/data/mindspore/search" -}}  
+          {{ .Data.data.application }}
+          {{- end }}
+        vault.hashicorp.com/agent-pre-populate-only: "true"
       labels:
         app: doc-search
     spec:
+      serviceAccount: mindspore-search
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
       containers:
       - env:
-        - name: eshost
-          valueFrom:
-            secretKeyRef:
-              key: eshost
-              name: doc-search-secret
-        - name: esusername
-          valueFrom:
-            secretKeyRef:
-              key: esusername
-              name: doc-search-secret
-        - name: espassword
-          valueFrom:
-            secretKeyRef:
-              key: espassword
-              name: doc-search-secret
-        - name: searchsystem
-          valueFrom:
-            secretKeyRef:
-              key: searchsystem
-              name: doc-search-secret
-        - name: depp
-          valueFrom:
-            secretKeyRef:
-              key: depp
-              name: doc-search-secret
-        - name: GIT_USERNAME
-          valueFrom:
-            secretKeyRef:
-              key: GIT_USERNAME
-              name: doc-search-secret
-        - name: GIT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: GIT_PASSWORD
-              name: doc-search-secret
-        - name: MINDSPORE_OFFICIAL
-          valueFrom:
-            secretKeyRef:
-              key: MINDSPORE_OFFICIAL
-              name: doc-search-secret
-        - name: X_ARMOR_BACKEND_APP_ID
-          valueFrom:
-            secretKeyRef:
-              key: xarmor_app_id
-              name: doc-search-secret
-        - name: X_ARMOR_BACKEND_APP_TOKEN
-          valueFrom:
-            secretKeyRef:
-              key: xarmor_app_token
-              name: doc-search-secret
-        - name: X_ARMOR_BACKEND_BACKEND_URL
-          valueFrom:
-            secretKeyRef:
-              key: xarmor_backend_url
-              name: doc-search-secret
         - name: X_ARMOR_BACKEND_TENANT_ID
           valueFrom:
             secretKeyRef:
-              key: xarmor_tenant_id
               name: doc-search-secret
+              key: xarmor_tenant_id
+        - name: X_ARMOR_BACKEND_APP_ID
+          valueFrom:
+            secretKeyRef:
+              name: doc-search-secret
+              key: xarmor_app_id
+        - name: X_ARMOR_BACKEND_APP_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: doc-search-secret
+              key: xarmor_backend_app_token
+        - name: X_ARMOR_SECURITY_ENABLE
+          valueFrom:
+            secretKeyRef:
+              name: doc-search-secret
+              key: xarmor_security_enable
+        - name: X_ARMOR_SECURITY_ROOT_PASSWORD_0
+          valueFrom:
+            secretKeyRef:
+              name: doc-search-secret
+              key: xarmor_security_root_password
+        - name: X_ARMOR_SECURITY_WORK_PASSWORD_0
+          valueFrom:
+            secretKeyRef:
+              name: doc-search-secret
+              key: xarmor_secutiry_work_password
+        - name: X_ARMOR_BACKEND_BACKEND_URL
+          valueFrom:
+            secretKeyRef:
+              name: doc-search-secret
+              key: xarmor_backend_url
         - name: APPLICATION_PATH
-          value: "/home/easysearch/EaseSearch/target/classes/application.yml"
+          value: "/vault/secrets/application.yml"
+        - name: MINDSPORE_OFFICIAL
+          value: "https://www.mindspore.cn"
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/docs-search:v1.0.20230504101041
         imagePullPolicy: IfNotPresent
         livenessProbe:
