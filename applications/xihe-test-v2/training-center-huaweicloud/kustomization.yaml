@@ -11,4 +11,4 @@ images:
   newName: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-training-center
   newTag: main-7ab5c52
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-training-center
-  newTag: v1.0.20231018153449
+  newTag: v1.0.20231018200227
