@@ -11,7 +11,6 @@ spec:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
         vault.hashicorp.com/agent-inject-perms-ca.crt: "0700"
-        vault.hashicorp.com/agent-inject-perms-redis.crt: "0700"
         vault.hashicorp.com/agent-run-as-user: "5000"
         vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-test-v2"
         vault.hashicorp.com/agent-inject-template-application.yml: |
@@ -22,11 +21,6 @@ spec:
         vault.hashicorp.com/agent-inject-template-ca.crt: |
           {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
           {{ .Data.data.MongoCA }}
-          {{- end }}
-        vault.hashicorp.com/agent-inject-secret-redis.crt: "internal/data/mindspore/xihe-test-v2"
-        vault.hashicorp.com/agent-inject-template-redis.crt: |
-          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
-          {{ .Data.data.RedisCA }}
           {{- end }}
         vault.hashicorp.com/agent-pre-populate-only: "true"
         vault.hashicorp.com/role: xihe-test
