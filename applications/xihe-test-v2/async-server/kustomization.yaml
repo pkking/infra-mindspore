@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-async-server
-  newTag: 39fd37e5753593eff06bc1a360725706f9b2f90f
+  newTag: 9d87ab55fa71641f1ed43c8f1ed3f304fd6cff3e
 kind: Kustomization
 commonAnnotations:
   kubernetes.ops.cluster: mindspore-cn4-x86
