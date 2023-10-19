@@ -10,4 +10,4 @@ images:
   newTag: main-411716
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe
   newName: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/robot-gitlab-sync-repo
-  newTag: r-dev-fff13c
+  newTag: dev-a77a58
