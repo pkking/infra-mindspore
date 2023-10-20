@@ -46,6 +46,7 @@ data:
         - robot-gitee-openeuler-cla
         - robot-gitee-openeuler-tech4dx-label
         - datastat-server
+        - robot-gitee-pr-message
         
         src-openeuler:
         - openeuler-ipb
@@ -102,9 +103,6 @@ data:
         - robot-gitee-openeuler-openeuler-welcome
         - robot-gitee-openeuler-cla
         - datastat-server
-
-        openeuler:
-        - robot-gitee-pr-message
 
         openlookeng:
         - robot-gitee-openlookeng-lgtm
