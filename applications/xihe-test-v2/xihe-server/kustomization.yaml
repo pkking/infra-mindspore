@@ -5,4 +5,4 @@ resources:
 - service.yaml
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-server
-  newTag: 2e1474ae365b1a87c0a4adbbfd3a508451a965ab
+  newTag: 2d2f7b58ac58571170fee97699c7cd9a49713ed2
