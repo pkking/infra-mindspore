@@ -8,42 +8,50 @@ spec:
   template:
     metadata:
       annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
-        vault.hashicorp.com/agent-inject-perms-kubeconfig.json: "0700"
-        vault.hashicorp.com/agent-run-as-user: "5000"
-        vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-test-v2"
-        vault.hashicorp.com/agent-inject-template-application.yml: |
-          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-perms-application.yml: '0700'
+        vault.hashicorp.com/agent-inject-perms-kubeconfig.json: '0700'
+        vault.hashicorp.com/agent-inject-secret-application.yml: internal/data/mindspore/xihe-test-v2
+        vault.hashicorp.com/agent-inject-secret-kubeconfig.json: internal/data/mindspore/xihe-test-v2
+        vault.hashicorp.com/agent-inject-template-application.yml: '{{- with secret
+          "internal/data/mindspore/xihe-test-v2" -}}
+
           {{ .Data.data.inferenceEvaluate }}
+
           {{- end }}
-        vault.hashicorp.com/agent-inject-secret-kubeconfig.json: "internal/data/mindspore/xihe-test-v2"
-        vault.hashicorp.com/agent-inject-template-kubeconfig.json: |
-          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
+
+          '
+        vault.hashicorp.com/agent-inject-template-kubeconfig.json: '{{- with secret
+          "internal/data/mindspore/xihe-test-v2" -}}
+
           {{ .Data.data.kubeconfig }}
+
           {{- end }}
-        vault.hashicorp.com/agent-pre-populate-only: "true"
+
+          '
+        vault.hashicorp.com/agent-pre-populate-only: 'true'
+        vault.hashicorp.com/agent-run-as-user: '5000'
         vault.hashicorp.com/role: xihe-test
     spec:
-      serviceAccount: xihe-test
-      imagePullSecrets:
-      - name: huawei-swr-image-pull-secret
       containers:
       - args:
         - --port=8000
         - --config-file=/vault/secrets/application.yml
         - --enable_debug=true
+        env:
+        - name: INFERENCE_IMAGE
+          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate:dev-b6ec8e
+        - name: INFERENCE_INIT_IMAGE
+          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate-init:dev-676509
+        - name: CLOUD_IMAGE
+          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-jupyter-cpu:dev-c0c074
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe:latest
         imagePullPolicy: IfNotPresent
         name: inference-evaluate
-        env:
-        - name: INFERENCE_IMAGE
-          value: "swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate:dev-b6ec8e"
-        - name: INFERENCE_INIT_IMAGE
-          value: "swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate-init:dev-676509"
-        - name: CLOUD_IMAGE
-          value: "swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-jupyter-cpu:dev-615d31"
         ports:
         - containerPort: 8000
           name: http
           protocol: TCP
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
+      serviceAccount: xihe-test
