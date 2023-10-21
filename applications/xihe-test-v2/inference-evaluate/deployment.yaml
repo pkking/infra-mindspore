@@ -44,7 +44,7 @@ spec:
         - name: INFERENCE_INIT_IMAGE
           value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate-init:dev-676509
         - name: CLOUD_IMAGE
-          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-jupyter-cpu:dev-f09535
+          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-jupyter-cpu:dev-7a436e
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe:latest
         imagePullPolicy: IfNotPresent
         name: inference-evaluate
