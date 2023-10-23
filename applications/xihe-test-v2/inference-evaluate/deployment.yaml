@@ -42,7 +42,7 @@ spec:
         - name: INFERENCE_IMAGE
           value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate:dev2-37764e
         - name: INFERENCE_INIT_IMAGE
-          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate-init:dev-63c0fe
+          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate-init:dev-d35b06
         - name: CLOUD_IMAGE
           value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/mindspore-jupyter-cpu:dev-d35b06
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe:latest
