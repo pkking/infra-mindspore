@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe-statistics-test
-  newTag: 1a1dc18910205adf12b5fa20556ebf37eec33327
+  newTag: 19beab18462d990a14197bc9ed697bea1b54631f
 kind: Kustomization
 namespace: xihe-test-v2
 resources:
