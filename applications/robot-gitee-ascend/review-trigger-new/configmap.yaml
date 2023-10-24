@@ -8,15 +8,6 @@ data:
     doc: "You can get details about the review process of pull-request at [**here**](https://gitee.com/I-am-a-robot/community/raw/master/pr_review.svg)"
     config_items:
     - repos:
-      - ascend/pytorch
-      need_welcome: true
-      cla_label: "ascend-cla/yes"
-      review:
-        number_of_approvers: 1
-        total_number_of_approvers: 2
-        total_number_of_reviewers: 1
-        
-    - repos:
         - ascend/AscendSpeed
       need_welcome: true
       cla_label: "ascend-cla/yes"

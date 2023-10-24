@@ -199,7 +199,6 @@ data:
         tips_if_added_by_others: "You can't add ci-pipeline-passed label manually. Please remove it and wait for the CI test to be completed."
         
     - repos:
-      - ascend/pytorch
       - ascend/op-plugin
       - ascend/ModelZoo-PyTorch
       merge_method: squash
@@ -223,3 +222,27 @@ data:
         tips_if_missing: "Please wait for the CI test to be completed."
         person: atlasaccount
         tips_if_added_by_others: "You can't add ci-pipeline-passed label manually. Please remove it and wait for the CI test to be completed."
+
+    - repos:
+      - ascend/pytorch
+      merge_method: squash
+      labels:
+      - label: ascend-cla/yes
+        tips_if_missing: "Please sign CLA. If you have done, comment /check-cla to recheck again."
+        person: I-am-a-robot
+        tips_if_added_by_others: "You can't add ascend-cla/yes label manually. Please comment /check-cla to verify it again."
+
+      - label: ci-pipeline-passed
+        tips_if_missing: "Please wait for the CI test to be completed."
+        person: atlasaccount
+        tips_if_added_by_others: "You can't add ci-pipeline-passed label manually. Please remove it and wait for the CI test to be completed."
+
+      - label: robot
+        tips_if_missing: "Please add robot tag if you are a robot."
+        person: pta-robot
+        tips_if_added_by_others: "You are NOT a ROBOT!"
+
+      - label: opplugin-smoke-passed
+        tips_if_missing: "Please wait for the smoking test to be completed."
+        person: pta-robot
+        tips_if_added_by_others: "You can't add opplugin-smoke-passed label manually. Please remove it and wait for the smoking test to be completed."
