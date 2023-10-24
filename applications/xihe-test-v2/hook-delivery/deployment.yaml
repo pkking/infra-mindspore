@@ -9,9 +9,10 @@ spec:
     metadata:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-perms-application.yml: "0700"
-        vault.hashicorp.com/agent-inject-perms-hmac: "0700"
-        vault.hashicorp.com/agent-inject-perms-kafka: "0700"
+        vault.hashicorp.com/agent-inject-perms-application.yml: "0600"
+        vault.hashicorp.com/agent-inject-perms-hmac: "0600"
+        vault.hashicorp.com/agent-inject-perms-kafka: "0600"
+        vault.hashicorp.com/agent-inject-perms-mq.crt: "0600"
         vault.hashicorp.com/agent-run-as-user: "5000"
         vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-test-v2"
         vault.hashicorp.com/agent-inject-template-application.yml: |
@@ -28,10 +29,15 @@ spec:
           {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
           {{ .Data.data.kafka }}
           {{- end }}
+        vault.hashicorp.com/agent-inject-secret-mq.crt: "internal/data/mindspore/xihe-test-v2"
+        vault.hashicorp.com/agent-inject-template-mq.crt: |
+          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
+          {{ .Data.data.MqCA }}
+          {{- end }}
         vault.hashicorp.com/agent-pre-populate-only: "true"
         vault.hashicorp.com/role: xihe-test
     spec:
-      serviceAccount: xihe-test
+      serviceAccount: xihe-test ces 
       imagePullSecrets:
       - name: huawei-swr-image-pull-secret
       containers:
@@ -39,8 +45,6 @@ spec:
         args:
         - --port=8000
         - --config-file=/vault/secrets/application.yml
-        - --hmac-secret-file=/vault/secrets/hmac
-        - --kafkamq-config-file=/vault/secrets/kafka
         image: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/xihe:latest
         imagePullPolicy: IfNotPresent
         ports:
