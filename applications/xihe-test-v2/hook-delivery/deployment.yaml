@@ -37,7 +37,7 @@ spec:
         vault.hashicorp.com/agent-pre-populate-only: "true"
         vault.hashicorp.com/role: xihe-test
     spec:
-      serviceAccount: xihe-test ces 
+      serviceAccount: xihe-test
       imagePullSecrets:
       - name: huawei-swr-image-pull-secret
       containers:
