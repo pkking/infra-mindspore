@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/xihe/big-model-finetune
-  newTag: main-0cff60
+  newTag: main-b9ca6e
 kind: Kustomization
 namespace: xihe-new
 resources:
