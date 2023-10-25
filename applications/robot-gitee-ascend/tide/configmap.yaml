@@ -242,7 +242,7 @@ data:
         person: pta-robot
         tips_if_added_by_others: "You are NOT a ROBOT!"
 
-      - label: opplugin-smoke-passed
+      - label: op-smoke-passed
         tips_if_missing: "Please wait for the smoking test to be completed."
         person: pta-robot
         tips_if_added_by_others: "You can't add opplugin-smoke-passed label manually. Please remove it and wait for the smoking test to be completed."
