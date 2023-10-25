@@ -10,24 +10,12 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/agent-inject-perms-application.yml: "0600"
-        vault.hashicorp.com/agent-inject-perms-hmac: "0600"
-        vault.hashicorp.com/agent-inject-perms-kafka: "0600"
         vault.hashicorp.com/agent-inject-perms-mq.crt: "0600"
         vault.hashicorp.com/agent-run-as-user: "5000"
         vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-test-v2"
         vault.hashicorp.com/agent-inject-template-application.yml: |
           {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
           {{ .Data.data.HookDelivery }}
-          {{- end }}
-        vault.hashicorp.com/agent-inject-secret-hmac: "internal/data/mindspore/xihe-test-v2"
-        vault.hashicorp.com/agent-inject-template-hmac: |
-          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
-          {{ .Data.data.SystemHookHac }}
-          {{- end }}
-        vault.hashicorp.com/agent-inject-secret-kafka: "internal/data/mindspore/xihe-test-v2"
-        vault.hashicorp.com/agent-inject-template-kafka: |
-          {{- with secret "internal/data/mindspore/xihe-test-v2" -}}
-          {{ .Data.data.kafka }}
           {{- end }}
         vault.hashicorp.com/agent-inject-secret-mq.crt: "internal/data/mindspore/xihe-test-v2"
         vault.hashicorp.com/agent-inject-template-mq.crt: |
