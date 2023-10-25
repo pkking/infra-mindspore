@@ -40,7 +40,7 @@ spec:
         - --enable_debug=true
         env:
         - name: INFERENCE_IMAGE
-          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate:dev-fdcae9
+          value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate:main-d29957
         - name: INFERENCE_INIT_IMAGE
           value: swr.cn-north-4.myhuaweicloud.com/opensourceway/mindspore/xihe-inference-evaluate-init:main-d29957
         - name: CLOUD_IMAGE
