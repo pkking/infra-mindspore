@@ -8,26 +8,31 @@ spec:
   template:
     metadata:
       annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-perms-application.yml: "0600"
-        vault.hashicorp.com/agent-inject-perms-kubeconfig.json: "0600"
-        vault.hashicorp.com/agent-run-as-user: "5000"
-        vault.hashicorp.com/agent-inject-secret-application.yml: "internal/data/mindspore/xihe-new"
-        vault.hashicorp.com/agent-inject-template-application.yml: |
-          {{- with secret "internal/data/mindspore/xihe-new" -}}
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-perms-application.yml: '0600'
+        vault.hashicorp.com/agent-inject-perms-kubeconfig.json: '0600'
+        vault.hashicorp.com/agent-inject-secret-application.yml: internal/data/mindspore/xihe-new
+        vault.hashicorp.com/agent-inject-secret-kubeconfig.json: internal/data/mindspore/xihe-new
+        vault.hashicorp.com/agent-inject-template-application.yml: '{{- with secret
+          "internal/data/mindspore/xihe-new" -}}
+
           {{ .Data.data.inferenceEvaluate }}
+
           {{- end }}
-        vault.hashicorp.com/agent-inject-secret-kubeconfig.json: "internal/data/mindspore/xihe-new"
-        vault.hashicorp.com/agent-inject-template-kubeconfig.json: |
-          {{- with secret "internal/data/mindspore/xihe-new" -}}
+
+          '
+        vault.hashicorp.com/agent-inject-template-kubeconfig.json: '{{- with secret
+          "internal/data/mindspore/xihe-new" -}}
+
           {{ .Data.data.kubeconfig }}
+
           {{- end }}
-        vault.hashicorp.com/agent-pre-populate-only: "true"
+
+          '
+        vault.hashicorp.com/agent-pre-populate-only: 'true'
+        vault.hashicorp.com/agent-run-as-user: '5000'
         vault.hashicorp.com/role: xihe-new
     spec:
-      serviceAccount: xihe-new
-      imagePullSecrets:
-      - name: huawei-swr-image-pull-secret
       containers:
       - args:
         - --port=8000
@@ -47,3 +52,6 @@ spec:
         - containerPort: 8000
           name: http
           protocol: TCP
+      imagePullSecrets:
+      - name: huawei-swr-image-pull-secret
+      serviceAccount: xihe-new
